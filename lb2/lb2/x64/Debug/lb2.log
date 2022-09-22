@@ -1,0 +1,4 @@
+﻿  lb2.cpp
+C:\Users\sushe\OneDrive\Рабочий стол\ЛиОАвИЗ\laba2\lb2\lb2\lb2.cpp(29,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\sushe\OneDrive\Рабочий стол\ЛиОАвИЗ\laba2\lb2\lb2\lb2.cpp(30,10): warning C4101: product: неиспользованная локальная переменная
+  lb2.vcxproj -> C:\Users\sushe\OneDrive\Рабочий стол\ЛиОАвИЗ\laba2\lb2\x64\Debug\lb2.exe
