@@ -51,6 +51,10 @@ void qs(int* items, int left, int right) //вызов функции: qs(items, 
 	if (i < right) qs(items, i, right);
 }
 
+int comp(const int* i, const int* j)
+{
+	return *i - *j;
+}
 
 int main()
 {
@@ -96,53 +100,88 @@ int main()
 
 	ofstream fout("res.txt", ios_base::app);
 
+	fout.width(20);
+	fout << "Cортировка Шелла		";
+	fout << size << "		";
 	startTime = clock();
 	shell(a, size);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат сортировки Шелла на рандомном массиве = " << times << " sec" << endl;
+	fout << times << " sec		";
 
+	
 	startTime = clock();
 	shell(b, size);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат сортировки Шелла на возрастающем массиве = " << times << " sec" << endl;
-
+	fout << times << " sec		";
+	
 	startTime = clock();
 	shell(c, size);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат сортировки Шелла на убывающем массиве = " << times << " sec" << endl;
-
+	fout << times << " sec				";
+	
 	startTime = clock();
 	shell(d, size);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат сортировки Шелла на возрастающем, а затем убывающем массиве = " << times << " sec" << endl;
-
+	fout << times << " sec		" << endl;
+	
+	fout.width(20);
+	fout << "Быстрая сортировка		";
+	fout << size << "		";
 	startTime = clock();
 	qs(a, 0, size - 1);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат быстрой сортировки на рандомном массиве = " << times << " sec" << endl;
-
+	fout << times << " sec		";
+	
 	startTime = clock();
 	qs(b, 0, size - 1);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат быстрой сортировки на возрастающем массиве = " << times << " sec" << endl;
-
+	fout << times << " sec		";
+	
 	startTime = clock();
 	qs(c, 0, size - 1);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат быстрой сортировки на убывающем массиве = " << times << " sec" << endl;
-
+	fout << times << " sec				";
+	
 	startTime = clock();
 	qs(d, 0, size - 1);
 	stopTime = clock();
 	times = double(stopTime - startTime) / CLK_TCK;
-	fout << "При размере " << size << " результат быстрой сортировки на возрастающем, а затем убывающем массиве = " << times << " sec" << endl;
+	fout << times << " sec		" << endl;
+	
+	fout.width(20);
+	fout << "Сортировка qsort		";
+	fout << size << "		";
+	startTime = clock();
+	qsort(a, size, sizeof(int), (int(*) (const void*, const void*)) comp);
+	stopTime = clock();
+	times = double(stopTime - startTime) / CLK_TCK;
+	fout << times << " sec		";
+	
+	startTime = clock();
+	qsort(b, size, sizeof(int), (int(*) (const void*, const void*)) comp);
+	stopTime = clock();
+	times = double(stopTime - startTime) / CLK_TCK;
+	fout << times << " sec		";
+	
+	startTime = clock();
+	qsort(c, size, sizeof(int), (int(*) (const void*, const void*)) comp);
+	stopTime = clock();
+	times = double(stopTime - startTime) / CLK_TCK;
+	fout << times << " sec				";
+	
+	startTime = clock();
+	qsort(d, size, sizeof(int), (int(*) (const void*, const void*)) comp);
+	stopTime = clock();
+	times = double(stopTime - startTime) / CLK_TCK;
+	fout << times << " sec		" << endl << endl;
+
 	fout.close();
 
 	free(a);
